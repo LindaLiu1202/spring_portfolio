@@ -30,17 +30,16 @@ class Year {
       this.isLeapYear = APCalendar.isLeapYear(year);
    }
 
-   /* numberOfYears getter/setters */
-   public int getNumberOfYears(int year1, int year2) {
+   /* numberOfLeapYears getter/setters */
+   public int getNumberOfLeapYears(int year1, int year2) {
       return APCalendar.numberOfLeapYears(year1, year2);
    }
    public void setNumberOfLeapYears(int year1, int year2) {  // this is private to avoid tampering
       this.numberOfLeapYears = APCalendar.numberOfLeapYears(year1, year2);
    }
 
-
    public String numberOfLeapYearsToString(){
-      return ( "{ \"numberOfLeapYears\": "  +this.numberOfLeapYears +  " }" );
+      return ( "{ \"numberOfLeapYears\": "  + this.numberOfLeapYears + " }" );
    }	
 
 

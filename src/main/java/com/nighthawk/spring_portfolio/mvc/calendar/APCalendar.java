@@ -71,25 +71,12 @@ public class APCalendar {
      * dayOfYear(3, 1, 2017) returns 60, since 2017 is not a leap year
      * dayOfYear(3, 1, 2016) returns 61, since 2016 is a leap year. 
     */ 
-    private static int dayOfYear(int month, int day, int year) {
-    //if year is divisible by 4 - leap year
-    //leap year has 2/29, total days = 366
-    //1) figure out is year a leap year or not 
-    //2) calculate total days/ get counts for days of previous month
-    //3) how many days are in a month (march 1 = how many days (has a extra day or not according to the year)
-
-    double m;
-    int days;
-    if (isLeapYear(year)) {
-        m = 30.5;
-        days = (int) (m * (month - 1) + day);
-    } else {
-        m = 30.417;
-        days = (int) (m * (month - 1) + day);
-    }
-    return days;
-    }
-
+    public static int dayOfYear(int month, int day, int year) {
+        // implementation not shown
+        
+        return (int) (Math.random() * (366 - 1)) + 1;
+    
+        }
 
     /** Returns the number of leap years between year1 and year2, inclusive.
      * Precondition: 0 <= year1 <= year2
@@ -115,16 +102,25 @@ public class APCalendar {
         return returnDay;
     }
 
-    /** Tester method */
-    public static void main(String[] args) {
-        // Private access modifiers
-        System.out.println("firstDayOfYear: " + APCalendar.firstDayOfYear(2006));
-        System.out.println("dayOfYear: " + APCalendar.dayOfYear(1, 1, 2022));
-
-        // Public access modifiers
-        System.out.println("isLeapYear: " + APCalendar.isLeapYear(2024));
-        System.out.println("numberOfLeapYears: " + APCalendar.numberOfLeapYears(2000, 2022));
-        System.out.println("dayOfWeek: " + APCalendar.dayOfWeek(1, 1, 2022));
-    }
-
+        /** Tester method */
+        public static void main(String[] args) {
+       
+            // Private access modifiers
+            System.out.println("\n \n firstDayOfYear: " + APCalendar.firstDayOfYear(2022));
+    
+            System.out.println("\n dayOfYear: " + APCalendar.dayOfYear(1, 1, 2022));
+    
+            // Public access modifiers
+            System.out.println("\n Testing isLeapYear:");
+    
+            System.out.println("\n isLeapYear 2022: " + APCalendar.isLeapYear(2022));
+            System.out.println("\n isLeapYear 2000: " + APCalendar.isLeapYear(2000));
+            System.out.println("\n isLeapYear 3000: " + APCalendar.isLeapYear(3000));
+    
+    
+            System.out.println("\n numberOfLeapYears: " + APCalendar.numberOfLeapYears(2000, 2022));
+    
+            System.out.println("\n dayOfWeek: " + APCalendar.dayOfWeek(1, 1, 2022));
+        }
+    
 }
