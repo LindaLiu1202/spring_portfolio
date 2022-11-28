@@ -7,6 +7,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +23,7 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.mongodb.DBObject;
 import com.vladmihalcea.hibernate.type.json.JsonType;
 
 import lombok.AllArgsConstructor;
@@ -86,12 +90,33 @@ public class Person {
         this.dob = dob;
     }
 
+    public String toString(){
+        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + " }" );
+    }
+
     // A custom getter to return age from dob attribute
     public int getAge() {
         if (this.dob != null) {
             LocalDate birthDay = this.dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             return Period.between(birthDay, LocalDate.now()).getYears(); }
         return -1;
+    }
+
+    //use parsing to convert string to date
+    //(source) https://www.edureka.co/blog/date-format-in-java
+    public static void main(String[] args)throws ParseException{
+
+        //No argument contructor
+        Person lin = new Person();
+        System.out.println(lin);
+
+        //All argument contructor
+        SimpleDateFormat dob = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = dob.parse("2006-12-02");
+        Person linda = new Person("lindaliu@gmail.com", "lindaliu135", "Linda Liu", date);
+        
+        System.out.println(linda);
+        System.out.println(linda.getAge());
     }
 
 }
