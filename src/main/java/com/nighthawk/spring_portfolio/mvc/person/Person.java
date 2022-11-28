@@ -67,6 +67,12 @@ public class Person {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dob;
+
+    //other attributes
+    private int age;
+    private int height;
+    private int weight;
+
     
 
     /* HashMap is used to store JSON for daily "stats"
@@ -83,15 +89,18 @@ public class Person {
     
 
     // Constructor used when building object from an API
-    public Person(String email, String password, String name, Date dob) {
+    public Person(String email, String password, String name, Date dob, int height, int age, int weight) {
         this.email = email;
         this.password = password;
         this.name = name;
         this.dob = dob;
+        this.height = height;
+        this.age = age;
+        this.weight = weight;
     }
 
     public String toString(){
-        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + " }" );
+        return ("{ \"email\": " + this.email + ", " + "\"password\": " + this.password + ", " + "\"name\": " + this.name + ", " + "\"dob\": " + this.dob + ", " + "\"height\": " + this.height + ", " + "\"age\": " + this.age + ", " + "\"weight\": " + this.weight + ", " + "kg" + " }" );
     }
 
     // A custom getter to return age from dob attribute
@@ -101,6 +110,7 @@ public class Person {
             return Period.between(birthDay, LocalDate.now()).getYears(); }
         return -1;
     }
+
 
     //use parsing to convert string to date
     //(source) https://www.edureka.co/blog/date-format-in-java
@@ -113,10 +123,13 @@ public class Person {
         //All argument contructor
         SimpleDateFormat dob = new SimpleDateFormat("yyyy-MM-dd");
         Date date = dob.parse("2006-12-02");
-        Person linda = new Person("lindaliu@gmail.com", "lindaliu135", "Linda Liu", date);
+        Person linda = new Person("lindaliu@gmail.com", "lindaliu135", "Linda Liu", date, 163, 15, 52);
         
-        System.out.println(linda);
-        System.out.println(linda.getAge());
+        System.out.println(linda.toString());
+        System.out.println("height: " + linda.getHeight());
+        System.out.println("age: " + linda.getAge());
+        System.out.println("weight: " + linda.getWeight() + "kg");
+        
     }
 
 }
