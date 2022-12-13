@@ -85,7 +85,7 @@ public class LightBoard {
     public String toColorPalette() {
         // block sizes
         final int ROWS = 5;
-        final int COLS = 10;
+        final int COLS = 5;
 
         // Build large string for entire color palette
         String outString = "";
@@ -137,7 +137,7 @@ public class LightBoard {
 
     static public void main(String[] args) {
         // create and display LightBoard
-        LightBoard lightBoard = new LightBoard(5, 5);
+        LightBoard lightBoard = new LightBoard(10, 5);
         lightBoard.turnOff(1,4);
         lightBoard.turnOff(3,4);
         System.out.println(lightBoard);  // use toString() method
