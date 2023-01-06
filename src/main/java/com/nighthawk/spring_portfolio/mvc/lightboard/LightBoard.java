@@ -1,5 +1,6 @@
 package com.nighthawk.spring_portfolio.mvc.lightboard;
 
+import ch.qos.logback.core.joran.conditional.ElseAction;
 import lombok.Data;
 
 @Data  // Annotations to simplify writing code (ie constructors, setters)
@@ -128,7 +129,6 @@ public class LightBoard {
                 outString += "\n";
             }
         }
-        
         // remove last comma, newline, add square bracket, reset color
         outString += "\033[m";
 		return outString;
